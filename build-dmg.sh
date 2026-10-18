@@ -41,9 +41,19 @@ cat > "$APP/Contents/Info.plist" <<EOF
 </plist>
 EOF
 
-# ponytail: ad-hoc signature only; Developer ID signing + notarization removes the
-# Gatekeeper "Open Anyway" step if this ever gets distributed widely.
-codesign --force --deep --sign - "$APP"
+# Sign with SIGN_IDENTITY, else the best certificate in the keychain (Developer ID,
+# then Apple Development), else ad-hoc. A real certificate keeps the app's identity
+# stable across builds, so the "control Vivaldi" permission survives updates.
+# ponytail: only Developer ID + notarization removes the Gatekeeper "Open Anyway"
+# step; that needs a paid Apple Developer Program account.
+find_identity() {
+  security find-identity -v -p codesigning | awk -F'"' -v kind="$1" 'index($2, kind) == 1 { print $2; exit }'
+}
+IDENTITY=${SIGN_IDENTITY:-$(find_identity "Developer ID Application")}
+IDENTITY=${IDENTITY:-$(find_identity "Apple Development")}
+IDENTITY=${IDENTITY:--}
+echo "Signing with: $IDENTITY"
+codesign --force --deep --sign "$IDENTITY" "$APP"
 
 mkdir dist/dmg
 cp -R "$APP" dist/dmg/

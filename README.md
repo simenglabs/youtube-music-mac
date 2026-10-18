@@ -32,7 +32,7 @@ Music keeps playing in your [music.youtube.com](https://music.youtube.com) tab i
 **[⬇ YT-Music-Bar-0.1.0.dmg](https://github.com/simenglabs/youtube-music-mac/raw/main/releases/YT-Music-Bar-0.1.0.dmg)**
 (2 MB, universal: Apple Silicon + Intel, macOS 11+)
 
-SHA-256: `e6ae15a0f65e2e086a302737036c9cf7b69c05d636ef3966a0547f35b299ed60`
+SHA-256: `91e214ce4d877192432f9e8e24cf542eff5e58a7c5fe46dc71ca8caabc32bc99`
 
 Requires [Vivaldi](https://vivaldi.com).
 
@@ -86,8 +86,8 @@ Click **♫** › **⚙** › **Open at Login** (a ✓ appears).
 
 ### Updating
 
-Install the new DMG the same way, replacing the old app. Because the app is ad-hoc
-signed, macOS may ask for the Vivaldi permission (step 3.4) again.
+Install the new DMG the same way, replacing the old app, and approve it once more
+with **Open Anyway** (step 2). The Vivaldi permission carries over between versions.
 
 ### Uninstalling
 
@@ -150,7 +150,7 @@ cargo test                       # unit tests
 - **Recommended playlists** only show while the YouTube Music tab is on Home.
 - Depends on YouTube Music's page structure. If YouTube changes its layout, the selectors
   in `TAB_JS` (`src/main.rs`) need updating.
-- Ad-hoc signed, not notarized by Apple.
+- Signed with an Apple Development certificate, not notarized (that needs a paid Apple Developer Program account), so macOS asks you to approve it once.
 
 ## Disclaimer
 

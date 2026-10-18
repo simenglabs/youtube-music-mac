@@ -46,8 +46,8 @@ Klik **♫** › tombol **⚙** › **Open at Login** (muncul tanda ✓).
 
 ## Update
 
-Pasang DMG versi baru dengan cara yang sama (timpa app lama). Karena app belum
-ditandatangani Apple, macOS mungkin menanyakan izin Vivaldi (langkah 3.4) lagi.
+Pasang DMG versi baru dengan cara yang sama (timpa app lama), lalu izinkan sekali lagi
+lewat **Open Anyway** (langkah 2). Izin kontrol Vivaldi tetap terbawa antar versi.
 
 ## Uninstall
 
